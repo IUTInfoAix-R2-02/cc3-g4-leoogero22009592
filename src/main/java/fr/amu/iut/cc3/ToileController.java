@@ -1,6 +1,7 @@
 package fr.amu.iut.cc3;
 
 import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -20,6 +21,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,21 +69,55 @@ public class ToileController implements Initializable {
                 *  (value / noteMaximale));
     }
 
+    public ArrayList<TextField> listeNotes(){
+        ArrayList<TextField> notes= new ArrayList<>();
+        notes.add(comp1);
+        notes.add(comp2);
+        notes.add(comp3);
+        notes.add(comp4);
+        notes.add(comp5);
+        notes.add(comp6);
+        return notes;
+    }
     @FXML
     public void tracerPoints(){
-        ArrayList<Double> notes= new ArrayList<>();
-        notes.add(Double.valueOf(comp1.getText()));
-        notes.add(Double.valueOf(comp2.getText()));
-        notes.add(Double.valueOf(comp3.getText()));
-        notes.add(Double.valueOf(comp4.getText()));
-        notes.add(Double.valueOf(comp5.getText()));
-        notes.add(Double.valueOf(comp6.getText()));
-
-        Circle point = new Circle();
-        point.setCenterX(getXRadarChart(notes.get(0), 1));
-        point.setCenterY(getXRadarChart(notes.get(0), 5));
-        point.setRadius(5);
-        radar.getChildren().add(point);
-
+        createBindings();
+        
+        for (int i = 0; i < 6; ++i) {
+            Circle point = new Circle();
+            point.setLayoutX(getXRadarChart(Double.valueOf(listeNotes().get(i).getText()), i+1));
+            point.setLayoutY(getYRadarChart(Double.valueOf(listeNotes().get(i).getText()), i+1));
+            point.setRadius(5);
+            radar.getChildren().add(point);
         }
     }
+
+    private void createBindings(){
+        
+        
+        for (TextField note : listeNotes()) {
+            BooleanBinding containsErrorBinding = new BooleanBinding() {
+                {
+                    super.bind(note.textProperty());
+                }
+
+                @Override
+                protected boolean computeValue() {
+                    return Integer.valueOf(note.getText()) > 20;
+                }
+            };
+            tracer.disableProperty().bind(containsErrorBinding);
+        }
+    }
+
+    @FXML
+    private void viderGraphe(){
+        comp1.setText("0");
+        comp2.setText("0");
+        comp3.setText("0");
+        comp4.setText("0");
+        comp5.setText("0");
+        comp6.setText("0");
+    }
+
+}

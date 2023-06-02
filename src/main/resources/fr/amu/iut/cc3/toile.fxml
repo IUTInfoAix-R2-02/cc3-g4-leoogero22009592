@@ -7,12 +7,12 @@
 <?import javafx.scene.text.*?>
 
 <HBox id="scene" alignment="CENTER_LEFT" prefHeight="430.0" prefWidth="660.0" spacing="20.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.amu.iut.cc3.ToileController">
-    <Pane fx:id="radar" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="400.0">
+    <Pane fx:id="radar" maxHeight="400.0" maxWidth="400.0"   prefHeight="400.0" prefWidth="400.0">
         <Circle centerX="200.0" centerY="200.0" radius="200.0" styleClass="toile" />
         <Circle centerX="200.0" centerY="200.0" radius="150.0" styleClass="toile" />
         <Circle centerX="200.0" centerY="200.0" radius="100.0" styleClass="toile" />
         <Circle centerX="200.0" centerY="200.0" radius="50.0" styleClass="toile" />
-        <Group layoutX="195.0" layoutY="195.0">
+        <Group fx:id="group" layoutX="195.0" layoutY="195.0">
             <Line endX="10.0" endY="5.0" startY="5.0" styleClass="croix" />
             <Line endX="5.0" endY="10.0" startX="5.0" styleClass="croix" />
         </Group>
@@ -73,34 +73,34 @@
             <font>
                <Font size="12.0" />
             </font></Label>
-         <Button fx:id="tracer"  mnemonicParsing="false" text="Tracer" GridPane.rowIndex="8" onAction="#tracerPoints"/>
-         <Button fx:id="vider"  mnemonicParsing="false" text="Vider" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-         <TextField fx:id="comp1" GridPane.columnIndex="1">
+         <Button fx:id="tracer" mnemonicParsing="false" onAction="#tracerPoints" text="Tracer" GridPane.rowIndex="8" />
+         <Button fx:id="vider" mnemonicParsing="false" onAction="#viderGraphe" text="Vider" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+         <TextField fx:id="comp1" GridPane.columnIndex="1"  text="0">
             <font>
                <Font size="12.0" />
             </font>
          </TextField>
-         <TextField fx:id="comp2" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <TextField fx:id="comp2" GridPane.columnIndex="1" GridPane.rowIndex="1" text="0">
             <font>
                <Font size="12.0" />
             </font>
          </TextField>
-         <TextField fx:id="comp3" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <TextField fx:id="comp3" GridPane.columnIndex="1" GridPane.rowIndex="2" text="0">
             <font>
                <Font size="12.0" />
             </font>
          </TextField>
-         <TextField fx:id="comp4" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <TextField fx:id="comp4" GridPane.columnIndex="1" GridPane.rowIndex="3" text="0">
             <font>
                <Font size="12.0" />
             </font>
          </TextField>
-         <TextField fx:id="comp5" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <TextField fx:id="comp5" GridPane.columnIndex="1" GridPane.rowIndex="4" text="0">
             <font>
                <Font size="12.0" />
             </font>
          </TextField>
-         <TextField fx:id="comp6" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <TextField fx:id="comp6" GridPane.columnIndex="1" GridPane.rowIndex="5" text="0">
             <font>
                <Font size="12.0" />
             </font>
