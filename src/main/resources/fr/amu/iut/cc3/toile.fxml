@@ -75,7 +75,9 @@
             </font></Label>
          <Button fx:id="tracer" mnemonicParsing="false" onAction="#tracerPoints" text="Tracer" GridPane.rowIndex="8" />
          <Button fx:id="vider" mnemonicParsing="false" onAction="#viderGraphe" text="Vider" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-         <TextField fx:id="comp1" GridPane.columnIndex="1"  text="0">
+         <Label fx:id="messageErreur" text="Erreur de saisie :  Les valeurs doivent être entre 0 et 20" textFill="white" GridPane.rowIndex="7">
+         </Label>
+          <TextField fx:id="comp1" GridPane.columnIndex="1"  text="0">
             <font>
                <Font size="12.0" />
             </font>

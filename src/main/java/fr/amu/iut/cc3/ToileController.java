@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
@@ -53,6 +54,8 @@ public class ToileController implements Initializable {
     @FXML
     private Button vider;
 
+    @FXML
+    private Label messageErreur;
 
 
     @Override
@@ -106,7 +109,11 @@ public class ToileController implements Initializable {
                     return Integer.valueOf(note.getText()) > 20;
                 }
             };
-            tracer.disableProperty().bind(containsErrorBinding);
+
+            messageErreur.styleProperty().bind(Bindings.when(containsErrorBinding)
+                    .then(Bindings.concat("-fx-text-fill:","#FF0000"))
+                    .otherwise(Bindings.concat("-fx-text-fill","FFFFFF"))
+            );
         }
     }
 
